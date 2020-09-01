@@ -33,16 +33,16 @@ class IndexController extends Controller
 		$results_number = 0;
 		foreach($results as $k=>$row)
         {   
-        	$this->Data[$k]['id'] = $row['id'];
-        	$this->Data[$k]['title'] = $row['title'];
-        	$this->Data[$k]['description'] = $row['description'];
+        	$Data[$k]['id'] = $row['id'];
+        	$Data[$k]['title'] = $row['title'];
+        	$Data[$k]['description'] = $row['description'];
 
         	$results_number += 1;
         }
 
-        $this->Data['results_number'] = $results_number;
+        $Data['results_number'] = $results_number;
 
-        echo json_encode($this->Data);
+        echo json_encode($Data);
 
 	}
 
