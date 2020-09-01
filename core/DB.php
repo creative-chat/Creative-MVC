@@ -95,7 +95,7 @@ class DB
 		}
 	}
 
-	// Prepare action
+	// Prepare select action
 	public function preSelect($sql, $queryArray)
 	{
 		$stmt = $this->db->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
@@ -117,49 +117,4 @@ class DB
 
 		$stmt->execute();
 	}
-
-	// Prepare demo
-	public function prepare_demo($sql, $queryArray)
-	{
-        $keyword = 'A';
-		$sql = "
-            SELECT * FROM tb_uccountrycode 
-			WHERE DESCE LIKE :DESCE
-			OR DESCE LIKE :DESCE_int
-        "; 
-
-        $queryArray = array();
-		$queryArray[':DESCE'] = $keyword.'%';
-		$queryArray[':DESCE_int'] = '% '.$keyword.'%';
-
-		$servername = "10.6.249.116,50266";
-        $database = "trade_code";
-        $username = "trade_code";
-        $password = "trade_code123";
-
-        $db = new PDO("sqlsrv:server=$servername;Database=$database", $username,$password, array( PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION ) );
-
-        $stmt = $db->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
-		$stmt->execute($queryArray);
- 
-		$stmt = $stmt->fetchAll($this->fetch_model);
-		return $stmt;
-
-		$array=array();
-		$array_num = 0;
-		foreach($stmt as $k=>$row) 
-		{
-			array_push( $array, array(
-				"CTCODE"=> $row['CTCODE'], 
-				"WORD"=> $row['DESCE'], 
-			));
-			$array_num += 1;
-		}
-
-		foreach($array as $k=>$row) 
-        {   
-          echo $row['CTCODE'].' | '.$row['WORD'].'<br/>';
-        }
-	}
-
 }

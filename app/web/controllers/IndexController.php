@@ -27,7 +27,8 @@ class IndexController extends Controller
 		$queryArray[':title'] = $keyword.'%';
 		$queryArray[':title_int'] = '% '.$keyword.'%';
 
-		$results = $this->db->preSelect($sql, $queryArray); // Prepare data to select
+		// Prepare data to select
+		$results = $this->db->preSelect($sql, $queryArray); 
 
 		foreach($results as $k=>$row)
         {   
@@ -42,7 +43,8 @@ class IndexController extends Controller
 		$log->preInsert_log('logs', 'testing log', null);
 	}
 
-	public function query() // No prepare data to select
+	// No prepare data to select
+	public function query() 
 	{
 		$sql = "SELECT * FROM logs limit 30";
         $results = $this->db->query($sql);

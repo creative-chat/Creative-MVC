@@ -37,7 +37,8 @@ class LogController extends Controller
 		    $queryArray['description'] = $description; 
 		    // $queryArray['updated_time'] = date('Y-m-d H:i:s');
 			
-			$stmt = $this->db->preInsert($sql, $queryArray); // Prepare data to insert
+			// Prepare data to insert
+			$stmt = $this->db->preInsert($sql, $queryArray); 
 		}
 
 		echo 'insert log';
