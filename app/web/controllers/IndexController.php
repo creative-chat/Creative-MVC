@@ -11,7 +11,7 @@ class IndexController extends Controller
 		$this->db = new \app\web\models\DbModel();
 	}
 
-	// Show logs data
+	// Show logs json format data
 	public function index()
 	{
 		$keyword = ''; // All data
@@ -30,10 +30,20 @@ class IndexController extends Controller
 		// Prepare data to select
 		$results = $this->db->preSelect($sql, $queryArray); 
 
+		$results_number = 0;
 		foreach($results as $k=>$row)
         {   
-          echo $row['id'].' | '.$row['title'].' | '.$row['description'].'<br/>';
+        	$this->Data[$k]['id'] = $row['id'];
+        	$this->Data[$k]['title'] = $row['title'];
+        	$this->Data[$k]['description'] = $row['description'];
+
+        	$results_number += 1;
         }
+
+        $this->Data['results_number'] = $results_number;
+
+        echo json_encode($this->Data);
+
 	}
 
 	public function log()
