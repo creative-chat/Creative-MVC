@@ -14,9 +14,9 @@ Author URI:   http://creative.chat <br/>
 
 # Creative MVC detail
 Default url, show the logs data:<br/>
-http://localhost/PHPMVC/index.php<br/>
+http://localhost/CreativeMVC/index.php<br/>
 Or:<br/>
-http://localhost/PHPMVC/index.php?l=web&c=index&m=index<br/>
+http://localhost/CreativeMVC/index.php?l=web&c=index&m=index<br/>
 
 Log url, insert log data:<br/>
 http://localhost/CreativeMVC/index.php?l=web&c=index&m=log<br/>
